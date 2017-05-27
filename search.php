@@ -161,8 +161,11 @@ $tumour_status=!empty($data)?$data['tumour_status']:'';
 $visioin_right_detail=!empty($data)?$data['visioin_right_detail']:'';
 $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 
+$searchid=$no;
+if (strlen($search)<12)
+	$searchid=$search;
 
-$exam = query("select * from sheet_report where `dian_no` = '$no'");
+$exam = query("select * from sheet_report where `dian_no` = '$searchid'");
 
 if ($exam){
     foreach ($exam as $item) {

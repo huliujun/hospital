@@ -887,7 +887,7 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 	});
 	$('#back_search').click(function(){
 		$.post('./search.php',{
-			search:$('#id_card').val(),
+			search:$('#no').val(),
 		},function(data){
 			$('.main_body').html(data);
 		});

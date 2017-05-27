@@ -86,9 +86,13 @@ foreach ($arr as $key=>$val){
 }
 $insert = substr($insert,0,-1);
 
-$res = mysql_query($insert) or die(mysql_error());
-if ($res==1)
-    echo iconv("GB2312","UTF-8",'<script>alert("导入成功");location.href="./index.php";</script>');
+$res = mysql_query($insert) or die(mysql_error().$insert);
+if ($res==1){
+	mysql_query("insert into report (`no`) select distinct dian_no as `no` from sheet_report where dian_no not in (select distinct `no` from report)");
+	echo iconv("GB2312","UTF-8",'<script>alert("导入成功");location.href="./index.php";</script>');
+	
+}
+    
 else
     echo iconv("GB2312","UTF-8",'<script>alert("导入模板错误");location.href="./index.php";</script>');
 //header('Location: ./index.php');
