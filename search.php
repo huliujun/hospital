@@ -78,7 +78,8 @@ $abdomen_baokuai=!empty($data)?(int)$data['abdomen_baokuai']:0;
 $abdomen_liver=!empty($data)?(int)$data['abdomen_liver']:0;
 $abdomen_pain=!empty($data)?(int)$data['abdomen_pain']:0;
 $abdomen_spleen=!empty($data)?(int)$data['abdomen_spleen']:0;
-$blood=!empty($data)?(double)$data['blood']:0;
+$blood=!empty($data)?(int)$data['blood']:0;
+$blood_x=!empty($data)?(int)$data['blood_x']:0;
 $card_num=!empty($data)?(int)$data['card_num']:0;
 $cataract=!empty($data)?(int)$data['cataract']:0;
 $cerebral_infarction=!empty($data)?(int)$data['cerebral_infarction']:0;
@@ -370,16 +371,16 @@ function get_checkbox_str($json_str,$arr){
                 <td style="width: 12%;">体重： </td>
                 <td style=""><?php echo $weight.'kg'?> </td>
                 <td style="width: 12%;">身高： </td>
-                <td style=""><?php echo $height.'kg'?> </td>
+                <td style=""><?php echo $height.'cm'?> </td>
                 <td style="width: 12%;">腰围： </td>
-                <td style=""><?php echo $waist.'kg'?> </td>
+                <td style=""><?php echo $waist.'cm'?> </td>
             </tr>
 
             <tr>
                 <td style="width: 12%;">臀围： </td>
-                <td style=""><?php echo $hipline.'kg'?> </td>
+                <td style=""><?php echo $hipline.'cm'?> </td>
                 <td style="width: 12%;">血压： </td>
-                <td style="" colspan="3"><?php echo $blood.'kg'?> </td>
+                <td style="" colspan="3"><?php echo $blood.'mmHg~'.$blood_x.'mmHg'?> </td>
             </tr>
 
             <tr>

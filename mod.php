@@ -15,7 +15,7 @@
 <style>
 .box				{width:50%;float:left;}
 .box3				{width:32%;float:left;}
-.box4				{width:16%;float:left;}
+.box4				{width:22%;float:left;}
 .box5				{width:16%;float:left;}
 body				{margin:auto}
 .main_body			{width:1120px;;margin:auto;height:auto;}
@@ -43,7 +43,8 @@ $abdomen_baokuai=!empty($data)?(int)$data['abdomen_baokuai']:'';
 $abdomen_liver=!empty($data)?(int)$data['abdomen_liver']:'';
 $abdomen_pain=!empty($data)?(int)$data['abdomen_pain']:'';
 $abdomen_spleen=!empty($data)?(int)$data['abdomen_spleen']:'';
-$blood=!empty($data)?(double)$data['blood']:'';
+$blood=!empty($data)?(int)$data['blood']:'';
+$blood_x=!empty($data)?(int)$data['blood_x']:'';
 $card_num=!empty($data)?(int)$data['card_num']:'';
 $cataract=!empty($data)?(int)$data['cataract']:'';
 $cerebral_infarction=!empty($data)?(int)$data['cerebral_infarction']:'';
@@ -432,19 +433,20 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 		<h4>四、一般情况：</h4>
 		<div class="tr">
 			<div class="form-group box5">
-				体重：<input type="text" class="form-control" placeholder="***" value='<?php echo $weight ?>' name="weight" id="weight" size=5>kg
+				体重：<input type="text" class="form-control" placeholder="***" value='<?php echo $weight ?>' name="weight" id="weight" size=3>kg
 			</div>
 			<div class="form-group box5">
-				身高：<input type="text" class="form-control" placeholder="***" value='<?php echo $height ?>' name="height" id="height" size=5>cm
+				身高：<input type="text" class="form-control" placeholder="***" value='<?php echo $height ?>' name="height" id="height" size=3>cm
 			</div>
 			<div class="form-group box5">
-				腰围：<input type="text" class="form-control" placeholder="***" value='<?php echo $waist ?>' name="waist" id="waist" size=5>cm
+				腰围：<input type="text" class="form-control" placeholder="***" value='<?php echo $waist ?>' name="waist" id="waist" size=3>cm
 			</div>
 			<div class="form-group box5">
-				臀围：<input type="text" class="form-control" placeholder="***" value='<?php echo $hipline ?>' name="hipline" id="hipline" size=5>cm
+				臀围：<input type="text" class="form-control" placeholder="***" value='<?php echo $hipline ?>' name="hipline" id="hipline" size=3>cm
 			</div>
-			<div class="form-group box5">
-				血压：<input type="text" class="form-control" placeholder="***" value='<?php echo $blood ?>' name="blood" id="blood" size=5>mmHg
+			<div class="form-group box4">
+				血压：<input type="text" class="form-control" placeholder="***" value='<?php echo $blood ?>' name="blood" id="blood" size=2>/
+				<input type="text" class="form-control" placeholder="***" value='<?php echo $blood_x ?>' name="blood_x" id="blood_x" size=2>mmHg
 			</div>
 		</div>
 
@@ -778,6 +780,7 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 			additional_check1:$('#additional_check1').val(),
 			additional_check2:$('#additional_check2').val(),
 			blood:$('#blood').val(),
+			blood_x:$('#blood_x').val(),
 			card_num:$('#card_num').val(),
 			cataract:$('#cataract').val(),
 			cerebral_infarction:$('#cerebral_infarction').val(),

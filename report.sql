@@ -111,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `report` (
   `addr` varchar(40) NOT NULL COMMENT '居住地址',
   `vision_left_x` decimal(3,1) NOT NULL,
   `visioin_right_x` decimal(3,1) NOT NULL,
+  `blood_x` int(11) NOT NULL COMMENT '血压',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_card` (`id_card`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
