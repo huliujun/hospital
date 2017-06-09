@@ -34,7 +34,7 @@ function excel_get_array($path,$sheet = 0,$echo = false){
     }elseif(array_values($path)[0]['error']==3){
         echo iconv("GB2312","UTF-8",'<script>alert("文件只有部分被上传");location.href="./index.php";</script>');
     }elseif(array_values($path)[0]['error']==4){
-        echo iconv("GB2312","UTF-8",'<script>alert("没有文件被上传");location.href="./index.php";</script>');
+        echo '<script>alert("没有文件被上传");location.href="./index.php";</script>';
         //echo '<script>alert("没有文件被上传");location.href="./index.php";</script>';
     }
 
@@ -72,6 +72,9 @@ function excel_get_array($path,$sheet = 0,$echo = false){
 $arr = excel_get_array($_FILES,0,0);
 array_shift($arr);
 //var_dump($arr);die;
+
+if(empty($arr))
+	echo '<script>alert("excel数据表没有数据");location.href="./index.php";</script>';
 
 $insert = "INSERT INTO `sheet_report` (`dian_no`, `project_no`, `result`, `project_unit`, `card_num`, `reference_value`, `upper_limit`, `lower_limit`, `mark`, `real_name`, `statdate`, `examiner`, `auditor` )VALUES ";
 

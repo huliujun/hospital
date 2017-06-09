@@ -83,7 +83,7 @@ $blood_x=!empty($data)?(int)$data['blood_x']:0;
 $card_num=!empty($data)?(int)$data['card_num']:0;
 $cataract=!empty($data)?(int)$data['cataract']:0;
 $cerebral_infarction=!empty($data)?(int)$data['cerebral_infarction']:0;
-$degree=!empty($data)?(int)$data['degree']:0;
+
 $diabetes=!empty($data)?(int)$data['diabetes']:0;
 $drink=!empty($data)?(int)$data['drink']:0;
 $drink_frequent=!empty($data)?(int)$data['drink_frequent']:0;
@@ -103,10 +103,10 @@ $lung=!empty($data)?(int)$data['lung']:0;
 $lung_shape=!empty($data)?(int)$data['lung_shape']:0;
 $lung_voice=!empty($data)?(int)$data['lung_voice']:0;
 $lymph=!empty($data)?(int)$data['lymph']:0;
-$marriage=!empty($data)?(int)$data['marriage']:0;
+
 $mouth=!empty($data)?(int)$data['mouth']:0;
 $nosmoke_year=!empty($data)?(int)$data['nosmoke_year']:0;
-$occu=!empty($data)?(int)$data['occu']:0;
+$occu=!empty($data)?$data['occu']:0;
 $operation=!empty($data)?(int)$data['operation']:0;
 $osteoporosis=!empty($data)?(int)$data['osteoporosis']:0;
 $rhythm=!empty($data)?(int)$data['rhythm']:0;
@@ -119,6 +119,7 @@ $sporttimes=!empty($data)?(int)$data['sporttimes']:0;
 $sportways=!empty($data)?(int)$data['sportways']:0;
 $tumour_year=!empty($data)?(int)$data['tumour_year']:0;
 $village=!empty($data)?(int)$data['village']:0;
+$luoyin=!empty($data)?(int)$data['luoyin']:0;
 $visioin_right=!empty($data)?(double)$data['visioin_right']:0;
 $vision_left=!empty($data)?(double)$data['vision_left']:0;
 $visioin_right_x=!empty($data)?(double)$data['visioin_right_x']:0;
@@ -161,6 +162,11 @@ $tumour_family=!empty($data)?$data['tumour_family']:'';
 $tumour_status=!empty($data)?$data['tumour_status']:'';
 $visioin_right_detail=!empty($data)?$data['visioin_right_detail']:'';
 $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
+$marriage=!empty($data)?$data['marriage']:'';
+$degree=!empty($data)?$data['degree']:'';
+$luoyin_detail=!empty($data)?$data['luoyin_detail']:'';
+$add_user=!empty($data)?$data['add_user']:'';
+$report_user=!empty($data)?$data['report_user']:'';
 
 $searchid=$no;
 if (strlen($search)<12)
@@ -235,9 +241,9 @@ function get_checkbox_str($json_str,$arr){
 
             <tr>
                 <td style="width: 12%;">婚姻状况： </td>
-                <td style=""><?php echo $marriage_arr[$marriage]?> </td>
+                <td style=""><?php echo $marriage?> </td>
                 <td style="width: 12%;">文化程度： </td>
-                <td style=""><?php echo $degree_arr[$degree]?> </td>
+                <td style=""><?php echo $degree?> </td>
             </tr>
 
             </tbody>
@@ -368,10 +374,10 @@ function get_checkbox_str($json_str,$arr){
         <table class="table "  >
             <tbody >
             <tr>
-                <td style="width: 12%;">体重： </td>
-                <td style=""><?php echo $weight.'kg'?> </td>
                 <td style="width: 12%;">身高： </td>
                 <td style=""><?php echo $height.'cm'?> </td>
+                <td style="width: 12%;">体重： </td>
+                <td style=""><?php echo $weight.'kg'?> </td>
                 <td style="width: 12%;">腰围： </td>
                 <td style=""><?php echo $waist.'cm'?> </td>
             </tr>
@@ -426,6 +432,15 @@ function get_checkbox_str($json_str,$arr){
                 <td style="width: 12%;">桶状胸： </td>
                 <td style=""><?php echo $_arr[$lung_shape]?> </td>
             </tr>
+            <tr>
+                <td style="width: 12%;"> </td>
+                <td style="width: 12%;">啰音： </td>
+                <td style=""><?php echo $luoyin_arr[$luoyin]?> </td>
+                <td style="width: 12%;">其他： </td>
+                <td style=""><?php echo $luoyin_detail?> </td>
+            </tr>
+
+
             <tr>
                 <td style="width: 12%;">4、心脏： </td>
                 <td style="width: 12%;">心率： </td>
@@ -526,7 +541,7 @@ function get_checkbox_str($json_str,$arr){
             </tr>
             </tbody>
         </table>
-
+    <p style="text-align: right;margin-right: 30px">录入人员：<?php echo $add_user?></p>
         <h4>十、体检结果健康评估：</h4>
         <table class="table "  >
             <tbody >
@@ -535,7 +550,8 @@ function get_checkbox_str($json_str,$arr){
             </tr>
             </tbody>
         </table>
-        <p style="text-align: right;margin-right: 150px">医师签名：</p>
+    <p style="text-align: right;margin-right: 30px">报告人员：<?php echo $report_user?></p>
+        <p style="text-align: right;margin-right: 70px">医师签名：</p>
 
 </div>
         <h4>附：体检报告</h4>

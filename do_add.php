@@ -19,7 +19,7 @@ $blood_x=(int)($_POST['blood_x']);
 $card_num=(int)($_POST['card_num']);
 $cataract=(int)($_POST['cataract']);
 $cerebral_infarction=(int)($_POST['cerebral_infarction']);
-$degree=(int)($_POST['degree']);
+
 $diabetes=(int)($_POST['diabetes']);
 $drink=(int)($_POST['drink']);
 $drink_frequent=(int)($_POST['drink_frequent']);
@@ -38,10 +38,10 @@ $lung=(int)($_POST['lung']);
 $lung_shape=(int)($_POST['lung_shape']);
 $lung_voice=(int)($_POST['lung_voice']);
 $lymph=(int)($_POST['lymph']);
-$marriage=(int)($_POST['marriage']);
+
 $mouth=(int)($_POST['mouth']);
 $nosmoke_year=(int)($_POST['nosmoke_year']);
-$occu=(int)($_POST['occu']);
+$occu=addslashes(trim($_POST['occu']));
 $operation=(int)($_POST['operation']);
 $osteoporosis=(int)($_POST['osteoporosis']);
 $rhythm=(int)($_POST['rhythm']);
@@ -55,9 +55,11 @@ $sportways=(int)($_POST['sportways']);
 $tumour_year=(int)($_POST['tumour_year']);
 $village=(int)($_POST['village']);
 $waist=(int)($_POST['waist']);
+$luoyin=(int)($_POST['luoyin']);
 
 
-
+$marriage=addslashes(trim($_POST['marriage']));
+$degree=addslashes(trim($_POST['degree']));
 $diet=addslashes(json_encode($_POST['diet']));
 $health_education=addslashes(json_encode($_POST['health_education']));
 $health_advice=addslashes(json_encode($_POST['health_advice']));
@@ -96,13 +98,16 @@ $tumour_family=addslashes(trim($_POST['tumour_family']));
 $tumour_status=addslashes(trim($_POST['tumour_status']));
 $visioin_right_detail=addslashes(trim($_POST['visioin_right_detail']));
 $vision_left_detail=addslashes(trim($_POST['vision_left_detail']));
+$luoyin_detail=addslashes(trim($_POST['luoyin_detail']));
+$add_user=addslashes(trim($_POST['add_user']));
+$report_user=addslashes(trim($_POST['report_user']));
 
 
 
-$insert = "INSERT INTO `report` (`no`, `real_name`, `tel`, `id_card`, `village`, `card_num`, `occu`, `marriage`, `degree`, `hypertension`, `hypertension_family`, `hypertension_medicine`, `diabetes`, `diabetes_family`, `diabetes_medicine`, `cerebral_infarction`, `cerebral_infarction_family`, `cerebral_infarction_medicine`, `heart_disease`, `heart_disease_family`, `heart_disease_medicine`, `lung`, `lung_family`, `lung_medicine`, `tumour`, `tumour_year`, `tumour_family`, `tumour_status`, `cataract`, `operation`, `glaucoma`, `osteoporosis`, `hyperlipemia`, `other_disease`, `sporttimes`, `sport_time`, `sportways`, `other_sports`, `diet`, `other_diet`, `smoke`, `smoke_year`, `smoke_no`, `nosmoke_year`, `drink`, `drink_type`, `drink_frequent`, `health`, `weight`, `height`, `waist`, `hipline`, `blood`, `vision_left`, `vision_left_detail`, `visioin_right`, `visioin_right_detail`, `skin`, `skin_other`, `lymph`, `lung_voice`, `lung_shape`, `heart`, `rhythm`, `heart_voice`, `heart_voice_other`, `abdomen_pain`, `abdomen_baokuai`, `abdomen_liver`, `abdomen_spleen`, `abdomen_spleen_other`, `mouth`, `mouth_other`, `hearing`, `health_education`, `health_education_other`, `health_advice`, `health_advice_other`, `additional_check1`, `additional_check2`, `check_result`,`addr`,`vision_left_x`,`visioin_right_x`,`blood_x`)
+$insert = "INSERT INTO `report` (`no`, `real_name`, `tel`, `id_card`, `village`, `card_num`, `occu`, `marriage`, `degree`, `hypertension`, `hypertension_family`, `hypertension_medicine`, `diabetes`, `diabetes_family`, `diabetes_medicine`, `cerebral_infarction`, `cerebral_infarction_family`, `cerebral_infarction_medicine`, `heart_disease`, `heart_disease_family`, `heart_disease_medicine`, `lung`, `lung_family`, `lung_medicine`, `tumour`, `tumour_year`, `tumour_family`, `tumour_status`, `cataract`, `operation`, `glaucoma`, `osteoporosis`, `hyperlipemia`, `other_disease`, `sporttimes`, `sport_time`, `sportways`, `other_sports`, `diet`, `other_diet`, `smoke`, `smoke_year`, `smoke_no`, `nosmoke_year`, `drink`, `drink_type`, `drink_frequent`, `health`, `weight`, `height`, `waist`, `hipline`, `blood`, `vision_left`, `vision_left_detail`, `visioin_right`, `visioin_right_detail`, `skin`, `skin_other`, `lymph`, `lung_voice`, `lung_shape`, `heart`, `rhythm`, `heart_voice`, `heart_voice_other`, `abdomen_pain`, `abdomen_baokuai`, `abdomen_liver`, `abdomen_spleen`, `abdomen_spleen_other`, `mouth`, `mouth_other`, `hearing`, `health_education`, `health_education_other`, `health_advice`, `health_advice_other`, `additional_check1`, `additional_check2`, `check_result`,`addr`,`vision_left_x`,`visioin_right_x`,`blood_x`,`luoyin`,`luoyin_detail`,`add_user`,`report_user`)
 					VALUES 
 					(
-						'$no', '$real_name', '$tel', '$id_card', '$village', '$card_num', '$occu', '$marriage', '$degree', '$hypertension', '$hypertension_family', '$hypertension_medicine', '$diabetes', '$diabetes_family', '$diabetes_medicine', '$cerebral_infarction', '$cerebral_infarction_family', '$cerebral_infarction_medicine', '$heart_disease', '$heart_disease_family', '$heart_disease_medicine', '$lung', '$lung_family', '$lung_medicine', '$tumour', '$tumour_year', '$tumour_family', '$tumour_status', '$cataract', '$operation', '$glaucoma', '$osteoporosis', '$hyperlipemia', '$other_disease', '$sporttimes', '$sport_time', '$sportways', '$other_sports', '$diet', '$other_diet', '$smoke', '$smoke_year', '$smoke_no', '$nosmoke_year', '$drink', '$drink_type', '$drink_frequent', '$health', '$weight', '$height', '$waist', '$hipline', '$blood', '$vision_left', '$vision_left_detail', '$visioin_right', '$visioin_right_detail', '$skin', '$skin_other', '$lymph', '$lung_voice', '$lung_shape', '$heart', '$rhythm', '$heart_voice', '$heart_voice_other', '$abdomen_pain', '$abdomen_baokuai', '$abdomen_liver', '$abdomen_spleen', '$abdomen_spleen_other', '$mouth', '$mouth_other', '$hearing', '$health_education', '$health_education_other', '$health_advice', '$health_advice_other', '$additional_check1', '$additional_check2', '$check_result','$addr','$vision_left_x','$visioin_right_x','$blood_x'
+						'$no', '$real_name', '$tel', '$id_card', '$village', '$card_num', '$occu', '$marriage', '$degree', '$hypertension', '$hypertension_family', '$hypertension_medicine', '$diabetes', '$diabetes_family', '$diabetes_medicine', '$cerebral_infarction', '$cerebral_infarction_family', '$cerebral_infarction_medicine', '$heart_disease', '$heart_disease_family', '$heart_disease_medicine', '$lung', '$lung_family', '$lung_medicine', '$tumour', '$tumour_year', '$tumour_family', '$tumour_status', '$cataract', '$operation', '$glaucoma', '$osteoporosis', '$hyperlipemia', '$other_disease', '$sporttimes', '$sport_time', '$sportways', '$other_sports', '$diet', '$other_diet', '$smoke', '$smoke_year', '$smoke_no', '$nosmoke_year', '$drink', '$drink_type', '$drink_frequent', '$health', '$weight', '$height', '$waist', '$hipline', '$blood', '$vision_left', '$vision_left_detail', '$visioin_right', '$visioin_right_detail', '$skin', '$skin_other', '$lymph', '$lung_voice', '$lung_shape', '$heart', '$rhythm', '$heart_voice', '$heart_voice_other', '$abdomen_pain', '$abdomen_baokuai', '$abdomen_liver', '$abdomen_spleen', '$abdomen_spleen_other', '$mouth', '$mouth_other', '$hearing', '$health_education', '$health_education_other', '$health_advice', '$health_advice_other', '$additional_check1', '$additional_check2', '$check_result','$addr','$vision_left_x','$visioin_right_x','$blood_x','$luoyin','$luoyin_detail','$add_user','$report_user'
 					)
 
 
@@ -192,7 +197,11 @@ $update = "update `report` set `no`= '$no',
  `check_result`= '$check_result',
 `addr`='$addr',
 `vision_left_x`='$vision_left_x',
-`visioin_right_x`='$visioin_right_x'
+`visioin_right_x`='$visioin_right_x',
+`luoyin`='$luoyin',
+`luoyin_detail`='$luoyin_detail',
+`add_user`='$add_user',
+`report_user`='$report_user'
  where `id` = ".$_POST['id'];
 
 if ($_POST['mod_id']=='update'){

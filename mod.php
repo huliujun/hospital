@@ -48,7 +48,7 @@ $blood_x=!empty($data)?(int)$data['blood_x']:'';
 $card_num=!empty($data)?(int)$data['card_num']:'';
 $cataract=!empty($data)?(int)$data['cataract']:'';
 $cerebral_infarction=!empty($data)?(int)$data['cerebral_infarction']:'';
-$degree=!empty($data)?(int)$data['degree']:'';
+$degree=!empty($data)?$data['degree']:'';
 $diabetes=!empty($data)?(int)$data['diabetes']:'';
 $drink=!empty($data)?(int)$data['drink']:'';
 $drink_frequent=!empty($data)?(int)$data['drink_frequent']:'';
@@ -68,7 +68,7 @@ $lung=!empty($data)?(int)$data['lung']:'';
 $lung_shape=!empty($data)?(int)$data['lung_shape']:'';
 $lung_voice=!empty($data)?(int)$data['lung_voice']:'';
 $lymph=!empty($data)?(int)$data['lymph']:'';
-$marriage=!empty($data)?(int)$data['marriage']:'';
+$marriage=!empty($data)?$data['marriage']:'';
 $mouth=!empty($data)?(int)$data['mouth']:'';
 $nosmoke_year=!empty($data)?(int)$data['nosmoke_year']:'';
 $occu=!empty($data)?(int)$data['occu']:'';
@@ -84,6 +84,7 @@ $sport_time=!empty($data)?(int)$data['sport_time']:'';
 $sporttimes=!empty($data)?(int)$data['sporttimes']:'';
 $sportways=!empty($data)?(int)$data['sportways']:'';
 $tumour_year=!empty($data)?(int)$data['tumour_year']:'';
+$luoyin=!empty($data)?(int)$data['luoyin']:'';
 $village=!empty($data)?(int)$data['village']:'';
 $visioin_right=!empty($data)?(double)$data['visioin_right']:'';
 $vision_left=!empty($data)?(double)$data['vision_left']:'';
@@ -128,6 +129,9 @@ $tumour_family=!empty($data)?$data['tumour_family']:'';
 $tumour_status=!empty($data)?$data['tumour_status']:'';
 $visioin_right_detail=!empty($data)?$data['visioin_right_detail']:'';
 $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
+$luoyin_detail=!empty($data)?$data['luoyin_detail']:'';
+$add_user=!empty($data)?$data['add_user']:'';
+$report_user=!empty($data)?$data['report_user']:'';
 
 ?>
 <div class="main_body">
@@ -204,24 +208,13 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 		<div class="tr">
 			<div class="form-group box">
 				<div class="title">婚姻状况：</div>
-				<select name="marriage" id="marriage" style="width:230px;height:30px">
-					<option <?php if ($marriage == 1) echo 'selected'?> value=1>已婚</option>
-					<option <?php if ($marriage == 2) echo 'selected'?> value=2>未婚</option>
-					<option <?php if ($marriage == 3) echo 'selected'?> value=3>离婚</option>
-				</select>
+				<input type="text" class="form-control" placeholder="请输入婚姻状况" value='<?php echo $marriage ?>' name="marriage" id="marriage" size=30>
+
 			</div>
 
 			<div class="form-group box">
 				<div class="title">文化程度：</div>
-				<select name="degree" id="degree" style="width:230px;height:30px">
-					<option <?php if ($degree == 1) echo 'selected'?> value=1>小学</option>
-					<option <?php if ($degree == 2) echo 'selected'?> value=2>初中</option>
-					<option <?php if ($degree == 3) echo 'selected'?> value=3>高中</option>
-					<option <?php if ($degree == 4) echo 'selected'?> value=4>中专(中技)</option>
-					<option <?php if ($degree == 5) echo 'selected'?> value=5>大学专科</option>
-					<option <?php if ($degree == 6) echo 'selected'?> value=6>大学本科</option>
-					<option <?php if ($degree == 7) echo 'selected'?> value=7>研究生</option>
-				</select>
+				<input type="text" class="form-control" placeholder="请输入文化程度" value='<?php echo $degree ?>' name="degree" id="degree" size=30>
 			</div>
 		</div>
 		<h4>二、既往病史（填写发病时间、家族史：父母、兄弟姐妹、子女）：</h4>
@@ -432,11 +425,12 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 		</div>
 		<h4>四、一般情况：</h4>
 		<div class="tr">
-			<div class="form-group box5">
-				体重：<input type="text" class="form-control" placeholder="***" value='<?php echo $weight ?>' name="weight" id="weight" size=3>kg
-			</div>
+
 			<div class="form-group box5">
 				身高：<input type="text" class="form-control" placeholder="***" value='<?php echo $height ?>' name="height" id="height" size=3>cm
+			</div>
+			<div class="form-group box5">
+				体重：<input type="text" class="form-control" placeholder="***" value='<?php echo $weight ?>' name="weight" id="weight" size=3>kg
 			</div>
 			<div class="form-group box5">
 				腰围：<input type="text" class="form-control" placeholder="***" value='<?php echo $waist ?>' name="waist" id="waist" size=3>cm
@@ -520,21 +514,38 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 		<div class="tr">
 			<p class="form-group " >　[桶状胸]： </p>
 			<div class="form-group radio">
-					<input type="radio" <?php if ($lung_shape == 1) echo 'checked'?> name='lung_shape' value='2' >无
+					<input type="radio" <?php if ($lung_shape == 2) echo 'checked'?> name='lung_shape' value='2' >无
 					</div>
 			<div class="form-group radio">
-					 <input type="radio" <?php if ($lung_shape == 2) echo 'checked'?> name='lung_shape' value='1' >有
+					 <input type="radio" <?php if ($lung_shape == 1) echo 'checked'?> name='lung_shape' value='1' >有
 					 </div>
 			<div class="form-group radio">
 			</div>
 		</div>
+
+		<div class="tr">
+			<p class="form-group " >　[  啰音  ]： </p>
+			<div class="form-group radio">
+				<input type="radio" <?php if ($luoyin == 1) echo 'checked'?> name='luoyin' value='1' >无
+			</div>
+			<div class="form-group radio">
+				<input type="radio" <?php if ($luoyin == 2) echo 'checked'?> name='luoyin' value='2' >干啰音
+			</div>
+			<div class="form-group radio">
+				<input type="radio" <?php if ($luoyin == 3) echo 'checked'?> name='luoyin' value='3' >湿啰音
+			</div>
+			<div class="form-group ">
+				其他：<input type="text" class="form-control" placeholder="***" value='<?php echo $luoyin_detail ?>' name="luoyin_detail" id="luoyin_detail" size=30>
+			</div>
+		</div>
+
 		<div class="tr">
 
 		<p class="form-group " >4、心脏：</p>
 		</div>
 		<div class="tr">
 			<div class="form-group ">
-			[心率]： <input type="text" class="form-control" placeholder="***" value='<?php echo $id_card ?>' name="heart" id="id_card" size=20>次/分
+			[心率]： <input type="text" class="form-control" placeholder="***" value='<?php echo $heart ?>' name="heart" id="heart" size=20>次/分
 			</div>
 		</div>
 		<div class="tr">
@@ -549,10 +560,10 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 		<div class="tr">
 			<p class="form-group " >　[杂音]：　</p>
 			<div class="form-group radio">
-			<input type="radio" <?php if ($heart_voice == 1) echo 'checked'?> name='heart_voice' value='2' >无
+			<input type="radio" <?php if ($heart_voice == 2) echo 'checked'?> name='heart_voice' value='2' >无
 					</div>
 			<div class="form-group radio">
-					 <input type="radio" <?php if ($heart_voice == 2) echo 'checked'?> name='heart_voice' value='1' >有
+					 <input type="radio" <?php if ($heart_voice == 1) echo 'checked'?> name='heart_voice' value='1' >有
 					 </div>
 			<div class="form-group ">
 					其他：<input type="text" class="form-control" placeholder="***" value='<?php echo $heart_voice_other ?>' name="heart_voice_other" id="heart_voice_other" size=30>
@@ -564,37 +575,37 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 		<div class="tr">
 			<p class="form-group " >　[压痛]：　</p>
 			<div class="form-group radio">
-			<input type="radio" <?php if ($abdomen_pain == 1) echo 'checked'?> name='abdomen_pain' value='2' >无
+			<input type="radio" <?php if ($abdomen_pain == 2) echo 'checked'?> name='abdomen_pain' value='2' >无
 				</div>
 			<div class="form-group radio">
-					 <input type="radio" <?php if ($abdomen_pain == 2) echo 'checked'?> name='abdomen_pain' value='1' >有
+					 <input type="radio" <?php if ($abdomen_pain == 1) echo 'checked'?> name='abdomen_pain' value='1' >有
 					 </div>
 		</div>
 		<div class="tr">
 			<p class="form-group " >　[包块]：　</p>
 			<div class="form-group radio">
-			<input type="radio" <?php if ($abdomen_baokuai == 1) echo 'checked'?> name='abdomen_baokuai' value='2' >无
+			<input type="radio" <?php if ($abdomen_baokuai == 2) echo 'checked'?> name='abdomen_baokuai' value='2' >无
 					</div>
 			<div class="form-group radio">
-					 <input type="radio" <?php if ($abdomen_baokuai == 2) echo 'checked'?> name='abdomen_baokuai' value='1' >有
+					 <input type="radio" <?php if ($abdomen_baokuai == 1) echo 'checked'?> name='abdomen_baokuai' value='1' >有
 			</div>
 		</div>
 		<div class="tr">
 			<p class="form-group " >　[肝大]：　</p>
 			<div class="form-group radio">
-			<input type="radio" <?php if ($abdomen_liver == 1) echo 'checked'?> name='abdomen_liver' value='2' >无
+			<input type="radio" <?php if ($abdomen_liver == 2) echo 'checked'?> name='abdomen_liver' value='2' >无
 				</div>
 			<div class="form-group radio">
-					 <input type="radio" <?php if ($abdomen_liver == 2) echo 'checked'?> name='abdomen_liver' value='1' >有
+					 <input type="radio" <?php if ($abdomen_liver == 1) echo 'checked'?> name='abdomen_liver' value='1' >有
 					 </div>
 		</div>
 		<div class="tr">
 			<p class="form-group " >　[脾大]：　</p>
 			<div class="form-group radio">
-			<input type="radio" <?php if ($abdomen_spleen == 1) echo 'checked'?> name='abdomen_spleen' value='2' >无
+			<input type="radio" <?php if ($abdomen_spleen == 2) echo 'checked'?> name='abdomen_spleen' value='2' >无
 					</div>
 			<div class="form-group radio">
-					 <input type="radio" <?php if ($abdomen_spleen == 2) echo 'checked'?> name='abdomen_spleen' value='1' >有
+					 <input type="radio" <?php if ($abdomen_spleen == 1) echo 'checked'?> name='abdomen_spleen' value='1' >有
 					 </div>
 			<div class="form-group ">
 					其他：<input type="text" class="form-control" placeholder="***" value='<?php echo $abdomen_spleen_other ?>' name="abdomen_spleen_other" id="abdomen_spleen_other" size=30>
@@ -694,10 +705,22 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 				　　<input type="text" class="form-control" placeholder="***" value='<?php echo $additional_check2 ?>' name="additional_check2" id="additional_check2" size=130>
 			</div>
 		</div>
+		<div class="tr">
+			<div class="form-group ">
+				　　录入人员：<input type="text" class="form-control" placeholder="***" value='<?php echo $add_user ?>' name="add_user" id="add_user" size=30>
+			</div>
+		</div>
+
+
 		<h4>十、体检结果健康评估：</h4>
 		<div class="tr">
 			<div class="form-group ">
 				　　<textarea name="check_result" rows="15" cols="130" id="check_result"><?php echo $check_result ?></textarea>
+			</div>
+		</div>
+		<div class="tr">
+			<div class="form-group ">
+				　　报告人员：<input type="text" class="form-control" placeholder="***" value='<?php echo $report_user ?>' name="report_user" id="report_user" size=30>
 			</div>
 		</div>
 <!--		<input type='submit' name='submit' value='提交'>-->
@@ -787,7 +810,7 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 			cerebral_infarction_family:$('#cerebral_infarction_family').val(),
 			cerebral_infarction_medicine:$('#cerebral_infarction_medicine').val(),
 			check_result:$('#check_result').val(),
-			degree:$('#degree option:selected').val(),
+			degree:$('#degree').val(),
 			diabetes:$('#diabetes').val(),
 			diabetes_family:$('#diabetes_family').val(),
 			diabetes_medicine:$('#diabetes_medicine').val(),
@@ -802,6 +825,7 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 			//health_education:$('#health_education').val(),
 			health_education_other:$('#health_education_other').val(),
 			hearing:$("input[name='hearing']:checked").val(),
+			luoyin:$("input[name='luoyin']:checked").val(),
 			heart:$('#heart').val(),
 			heart_disease:$('#heart_disease').val(),
 			heart_disease_family:$('#heart_disease_family').val(),
@@ -821,7 +845,7 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 			lung_shape:$("input[name='lung_shape']:checked").val(),
 			lung_voice:$("input[name='lung_voice']:checked").val(),
 			lymph:$("input[name='lymph']:checked").val(),
-			marriage:$('#marriage option:selected').val(),
+			marriage:$('#marriage').val(),
 			mouth:$("input[name='mouth']:checked").val(),
 			mouth_other:$('#mouth_other').val(),
 			no:$('#no').val(),
@@ -856,6 +880,9 @@ $vision_left_detail=!empty($data)?$data['vision_left_detail']:'';
 			weight:$('#weight').val(),
 			visioin_right_x:$('#visioin_right_x').val(),
 			vision_left_x:$('#vision_left_x').val(),
+			luoyin_detail:$('#luoyin_detail').val(),
+			add_user:$('#add_user').val(),
+			report_user:$('#report_user').val(),
 			addr:$('#addr').val()
 		},function(data){
 			if (data==1){

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2017 广05 朿10 旿04:31
+-- 生成日期: 2017 �?06 �?09 �?16:35
 -- 服务器版本: 5.6.17
 -- PHP 版本: 5.5.12
 
@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS `report` (
   `id_card` varchar(20) NOT NULL COMMENT '身份证',
   `village` int(11) NOT NULL COMMENT '村子',
   `card_num` int(11) NOT NULL COMMENT '社保卡号',
-  `occu` tinyint(4) NOT NULL COMMENT '职业',
-  `marriage` tinyint(4) NOT NULL COMMENT '婚姻',
-  `degree` tinyint(4) NOT NULL COMMENT '学历',
+  `occu` varchar(40) NOT NULL COMMENT '职业',
+  `marriage` varchar(40) NOT NULL COMMENT '婚姻',
+  `degree` varchar(40) NOT NULL COMMENT '学历',
   `hypertension` int(11) NOT NULL COMMENT '高血压',
   `hypertension_family` varchar(40) NOT NULL COMMENT '高血压家族',
   `hypertension_medicine` varchar(40) NOT NULL COMMENT '高血压药物',
@@ -111,10 +111,19 @@ CREATE TABLE IF NOT EXISTS `report` (
   `addr` varchar(40) NOT NULL COMMENT '居住地址',
   `vision_left_x` decimal(3,1) NOT NULL,
   `visioin_right_x` decimal(3,1) NOT NULL,
-  `blood_x` int(11) NOT NULL COMMENT '血压',
-  PRIMARY KEY (`id`),
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `blood_x` int(11) NOT NULL,
+  `luoyin` tinyint(4) NOT NULL,
+  `luoyin_detail` varchar(40) NOT NULL,
+  `add_user` varchar(12) NOT NULL,
+  `report_user` varchar(12) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=484 ;
 
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sheet_report`
+--
 
 CREATE TABLE IF NOT EXISTS `sheet_report` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
@@ -123,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `sheet_report` (
   `result` varchar(20) NOT NULL COMMENT '检测结果',
   `project_unit` varchar(20) NOT NULL COMMENT '项目单位',
   `card_num` varchar(20) NOT NULL COMMENT '卡号',
-  `reference_value` text  NOT NULL COMMENT '参考值',
+  `reference_value` text NOT NULL COMMENT '参考值',
   `upper_limit` varchar(20) NOT NULL COMMENT '参考上限',
   `lower_limit` varchar(20) NOT NULL COMMENT '参考下限',
   `mark` varchar(20) NOT NULL COMMENT '标志',
@@ -132,4 +141,4 @@ CREATE TABLE IF NOT EXISTS `sheet_report` (
   `examiner` varchar(20) NOT NULL COMMENT '检验人',
   `auditor` varchar(20) NOT NULL COMMENT '审核人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30147 ;
